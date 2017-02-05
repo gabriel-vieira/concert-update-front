@@ -9,7 +9,8 @@ angular.module('myApp.dashboard', ['ngRoute'])
   });
 }])
 
-.controller('DashboardCtrl', [function() {
+.controller('DashboardCtrl', ['$scope',function($scope) {
+
   $scope.user = {
     "displayName":"arkangel",
     "firstName":"gabriel",
