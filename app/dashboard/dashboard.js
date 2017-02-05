@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('myApp.dashboard', ['ngRoute'])
-
+angular.module('myApp.dashboard', ['ngRoute', "UserServiceMock"])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {
     templateUrl: 'dashboard/dashboard.html',
@@ -9,13 +8,6 @@ angular.module('myApp.dashboard', ['ngRoute'])
   });
 }])
 
-.controller('DashboardCtrl', ['$scope',function($scope) {
-
-  $scope.user = {
-    "displayName":"arkangel",
-    "firstName":"gabriel",
-    "lastName":"vieira",
-    "email":"gabriel93250@gmail.com",
-    "picture":"https://api.deezer.com/user/22249217/image?size=medium"
-  }
+.controller('DashboardCtrl', ['$scope', 'userService', function($scope, userService) {
+  $scope.user = userService.getUser();
 }]);
