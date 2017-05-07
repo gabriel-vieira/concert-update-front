@@ -1,0 +1,29 @@
+.artistCard {
+  position: relative;
+  display: block;
+  max-width: 220px;
+  border: 1px solid @grey;
+
+  &:hover {
+    .artistCard__overlay{
+      top: 0;
+      opacity: .9;
+      background: #fff
+    }
+  }
+
+  .artistCard__overlay{
+    transition: top .3s ease,opacity .3s ease;
+    position: absolute;
+    opacity: 0;
+    top: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0;
+  }
+}

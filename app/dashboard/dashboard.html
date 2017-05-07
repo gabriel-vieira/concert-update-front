@@ -1,7 +1,8 @@
 <div class="DashboardCtrl">
-  <p>
-  <a href="/">Accueil</a> |
-  <a href="http://localhost:3000/auth/deezer">Connection avec Deezer</a>
-  </p>
-  {{user.displayName}}
+  <ul class="menu">
+    {{isConnected}}
+    <li ng-show="!isConnected"><a href="http://localhost:3000/api/auth/deezer/callback">Connection</a></li>
+    <li><a href="#!/view2">A propos</a></li>
+  </ul>
+  <artist-card artist="artist"></artist-card>
 </div>

@@ -1,13 +1,12 @@
 'use strict';
 
-angular.module('myApp.dashboard', ['ngRoute', "UserServiceMock"])
+angular.module('myApp.dashboard', ['ngRoute', "UserServiceHttp", "ArtistCardDirective"])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {
     templateUrl: 'dashboard/dashboard.html',
     controller: 'DashboardCtrl'
   });
 }])
-
 .controller('DashboardCtrl', ['$scope', 'userService', function($scope, userService) {
-  $scope.user = userService.getUser();
+  $scope.isConnected = userService.getUser();
 }]);
