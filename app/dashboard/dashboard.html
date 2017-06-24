@@ -1,8 +1,15 @@
 <div class="DashboardCtrl">
   <ul class="menu">
-    {{isConnected}}
-    <li ng-show="!isConnected"><a href="http://localhost:3000/api/auth/deezer/callback">Connection</a></li>
+    <li ng-show="!user"><a href="http://localhost:3000/api/auth/deezer/callback">Connection</a></li>
     <li><a href="#!/view2">A propos</a></li>
   </ul>
+  <div class="sidebar" ng-show="user">
+  	{{user.displayName}}
+
+    <img src="{{user.photos[1].value}}" alt="{{user.displayName}}">
+  </div>
   <artist-card artist="artist"></artist-card>
+  <div class="loader" ng-show="isLoading">
+    <span>Chargement en cours</span>
+  </div>
 </div>

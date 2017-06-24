@@ -1,29 +1,22 @@
 'use strict';
 
 angular.module('UserServiceHttp', [])
-.factory("userService", function($http) {
+.factory("userService", function($http, $q) {
 
-  // var member = {
-  //   "displayName":"arkangel",
-  //   "firstName":"gabriel",
-  //   "lastName":"vieira",
-  //   "email":"gabriel93250@gmail.com",
-  //   "picture":"https://api.deezer.com/user/22249217/image?size=medium"
-  // }
   var URL_API = "http://localhost:3000/api/";
 
-  var member = {
-      "hasBeenConnected": false
-  };
-
   return {
+
     getUser: function() {
       var promise = $http.get(URL_API + 'user');
+      var deferred = $q.defer();
+
       promise.then(function(response) {
-        console.log('response',response);
+         deferred.resolve(response.data.member);
       }, function(error) {
-        console.log('error',error);
+        deferred.reject(error);
       });
+      return deferred.promise;
     }
   }
 });
