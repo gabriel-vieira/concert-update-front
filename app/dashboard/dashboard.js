@@ -10,5 +10,5 @@ angular.module('myApp.dashboard', ['ngRoute', "UserServiceHttp", "ArtistCardDire
 .controller('DashboardCtrl', ['$scope', 'userService', function($scope, userService) {
     userService.getUser().then(function(result) {
         $scope.user = result;
-    });;
+    });
 }]);
